@@ -5,6 +5,7 @@ using namespace std;
 #define ff first
 #define ss second
 #define pb push_back
+#define er erase
 #define sz(x) 	((int)(x).size())
 #define ll long long
 #define all(x) (x).begin(), (x).end()
