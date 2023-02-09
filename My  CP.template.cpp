@@ -5,13 +5,53 @@ using namespace std;
 #define ff first
 #define ss second
 #define pb push_back
+#define ppb pop_back
+#define mp make_pair
+#define loop(i,n) for(int i = 0; i < n; i++)
+#define rloop(i,m,n) for(int i = m; i >= n;i--)
 #define er erase
 #define sz(x)   ((int)(x).size())
 #define ll long long
+#define lld long  double
+#define ull unsigned long long 
 #define all(x) (x).begin(), (x).end()
 #define set_bits __builtin_popcountll
  /* ------------------- Macros Ends ---------------*/
+ const lld pi = 3.141592653589793238;
+ const ll INF = 1e18;
+ const ll mod = 1e9 + 7;
 
+ typedef pair<ll,ll> pll;
+ typedef vector<ll> vll;
+ typedef vector<string> vst;
+ typedef vector<char> vc;
+ typedef vector<pair<string,char>> vpsc;
+ typedef vector<pair<char,string>> vpcs;
+ typedef vector<pll> vpll;
+ typedef vector<string> vs;
+ typedef unordered_map<ll,ll> umll;
+ typedef map<ll,ll> mll;
+ typedef set<ll> sll;
+ typedef unordered_set<ll,ll> usll;
+
+
+template <typename T>
+void _print(T &&t)  { cout << t << "\n"; }
+void printarr(ll arr[], ll n){loop(i,n) cout << arr[i] << " ";cout << "\n";}
+template<typename T>
+void printvec(vector<T>v){ll n=v.size();loop(i,n)cout<<v[i]<<" ";cout<<"\n";}
+template<typename T>
+ll sumvec(vector<T>v){ll n=v.size();ll s=0;loop(i,n)s+=v[i];return s;}
+
+
+template<typename T1, typename T2> 
+istream& operator>>(istream &istream, pair<T1, T2> &p) { return (istream >> p.first >> p.second); }
+template<typename T> 
+istream& operator>>(istream &istream, vector<T> &v){for (auto &it : v)cin >> it;return istream;}
+template<typename T1, typename T2> 
+ostream& operator<<(ostream &ostream, const pair<T1, T2> &p) { return (ostream << p.first << " " << p.second); }
+template<typename T> 
+ostream& operator<<(ostream &ostream, const vector<T> &c) { for (auto &it : c) cout << it << " "; return ostream; }
  /* ------------------- Debugging Begin ---------------*/
 
 template<class T>void print(T x) {
@@ -160,7 +200,9 @@ void judge()
 
 void Mayank() 
 {
- 
+
+  
+
 }
 
 int main()
