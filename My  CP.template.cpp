@@ -1,6 +1,9 @@
 #include<bits/stdc++.h>
+#include<ext/pb_ds/assoc_container.hpp>
+#include<ext/pb_ds/tree_policy.hpp>
 using namespace std;
- /* ------------------- Macros Begins ---------------*/
+using namespace __gnu_pbds;
+
 #define nline "\n"
 #define ff first
 #define ss second
@@ -10,16 +13,23 @@ using namespace std;
 #define loop(i,n) for(int i = 0; i < n; i++)
 #define rloop(i,m,n) for(int i = m; i >= n;i--)
 #define er erase
+#define mem memset(a,(b),sizeof(a))
+#define fbo(x) find_by_order(x)
 #define sz(x)   ((int)(x).size())
 #define ll long long
+#define oby(x) order_of_key(x)
 #define lld long  double
 #define ull unsigned long long 
 #define all(x) (x).begin(), (x).end()
+#define rall(x) (x).end(),(x).end()
 #define set_bits __builtin_popcountll
- /* ------------------- Macros Ends ---------------*/
+
+
  const lld pi = 3.141592653589793238;
  const ll INF = 1e18;
  const ll mod = 1e9 + 7;
+
+
 
  typedef pair<ll,ll> pll;
  typedef vector<ll> vll;
@@ -33,6 +43,7 @@ using namespace std;
  typedef map<ll,ll> mll;
  typedef set<ll> sll;
  typedef unordered_set<ll,ll> usll;
+ typedef tree<ll , null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update> pbds;
 
 
 template <typename T>
@@ -52,136 +63,22 @@ template<typename T1, typename T2>
 ostream& operator<<(ostream &ostream, const pair<T1, T2> &p) { return (ostream << p.first << " " << p.second); }
 template<typename T> 
 ostream& operator<<(ostream &ostream, const vector<T> &c) { for (auto &it : c) cout << it << " "; return ostream; }
- /* ------------------- Debugging Begin ---------------*/
 
-template<class T>void print(T x) {
-  cerr << x;
-}
-template<class T, class V>
-         void print(pair<T , V> x)
-{
-  print(x.ff);
-  cerr << ':';
-  print(x.ss);
-}
-template<class T>
-         void print(vector<T> &a)
-{
-  cerr << '[' << ' ';
-  for(auto x : a)
-  {
-    print(x);
-    cerr << ' ';
-  }
-  cerr << ']';
-}
-template<class T>
-         void print(set<T> &a)
-{
-  cerr << '[' << ' ';
-  for(auto x : a)
-  {
-    print(x);
-    cerr << ' ';
-  }
-  cerr << ']';
-}
-template<class T>
-         void print(set<T,
-                    greater<T>> &a)
-{
-  cerr << '[' << ' ';
-  for(auto x : a)
-  {
-    print(x);
-    cerr << ' ';
-  }
-  cerr << ']';
-}
-template<class T>
-         void print(multiset<T> &a)
-{
-  cerr << '[' << ' ';
-  for(auto x : a)
-  {
-    print(x);
-    cerr << ' ';
-  }
-  cerr << ']';
-}
-template<class T>
-         void print(multiset<T,
-                    greater<T>> &a)
-{
-  cerr << '[' << ' ';
-  for(auto x : a)
-  {
-    print(x);
-    cerr << ' ';
-  }
-  cerr << ']';
-}
-template<class T>
-         void print(unordered_set<T> &a)
-{
-  cerr << '[' << ' ';
-  for(auto x : a)
-  {
-    print(x);
-    cerr << ' ';
-  }
-  cerr << ']';
-}
-template<class T, class V>
-         void print(vector<pair<T, V>> &a)
-{
-  cerr << '[' << ' ';
-  for(auto x : a)
-  {
-    print(x.ff);
-    cerr << ":";
-    print(x.ss);
-    cerr << ' ';
-  }
-  cerr << ']';
-}
-template <class T, class V>
-          void print(map <T, V> &a)
-{
-  cerr << "[ ";
-  for (auto i : a)
-  {
-    print(i);
-    cerr << " ";
-  }
-  cerr << "]";
-}
-template <class T, class V>
-          void print(unordered_map <T, V> &a)
-{
-  cerr << "[ ";
-  for (auto i : a)
-  {
-    print(i);
-    cerr << " ";
-  }
-  cerr << "]";
-}
-template <class T>
-          void print(vector<vector<T>> &a)
-{
-  cerr << "[ ";
-  for (auto i : a)
-  {
-    print(i);
-    cerr << " ";
-  }
-  cerr << "]";
-}
 
- /* ------------------- Debugging Ends---------------*/
+template<class T>void print(T x) {cerr << x << " ";}
+template<class T, class V> void print(pair<T , V> x)
+{print(x.ff); cerr << ':'; print(x.ss);}
+template<class T>void print(vector<T> &a) {cerr << '[' << ' ';for(auto x : a){print(x);cerr << ' ';}cerr << ']';}
+template<class T>void print(set<T> &a){cerr << '[' << ' ';for(auto x : a){print(x);cerr << ' ';}cerr << ']';}
+template<class T>void print(set<T,greater<T>> &a){cerr << '[' << ' ';for(auto x : a){print(x);cerr << ' ';}cerr << ']';}
+template<class T>void print(multiset<T> &a){cerr << '[' << ' ';for(auto x : a){print(x);cerr << ' ';}cerr << ']';}
+template<class T>void print(multiset<T,greater<T>> &a){cerr << '[' << ' ';for(auto x : a){print(x);cerr << ' ';}cerr << ']';}
+template<class T> void print(unordered_set<T> &a){cerr << '[' << ' ';for(auto x : a){ print(x);cerr << ' ';}cerr << ']';}
+template<class T, class V>void print(vector<pair<T, V>> &a){cerr << '[' << ' ';for(auto x : a){cerr << ":";print(x.ss); cerr << ' ';}cerr << ']';}
+template <class T, class V>void print(map <T, V> &a){cerr << "[ ";for (auto i : a){print(i);cerr << " "; }cerr << "]";}
+template <class T, class V>void print(unordered_map <T, V> &a){cerr << "[ ";for (auto i : a){print(i);cerr << " ";}cerr << "]";}
+template <class T>void print(vector<vector<T>> &a){ cerr << "[ ";for (auto i : a){print(i);cerr << " ";}cerr << "]";}
 
- /* ------------------- Online Judge Begins---------------*/
 
 void judge()
 {
@@ -190,18 +87,19 @@ void judge()
   #endif
  
   #ifndef ONLINE_JUDGE
-  #define debug(x)  cerr << #x << " = ";  print(x);  cerr << '\n';
+  #define debug(x)  cerr << #x << " = ";  print(x);  cerr << nline;
+  #define debug2(x,y) cerr << #x << " = "; print(x); cerr << #y << " = "; print(y); cerr << nline; 
   #else
   #define debug(x) 
   #endif
 }
 
- /* ------------------- Online Judge Ends ---------------*/
+ 
 
 void Mayank() 
 {
-
   
+
 
 }
 
