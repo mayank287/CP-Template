@@ -30,18 +30,20 @@ using namespace __gnu_pbds;
  const ll mod = 1e9 + 7;
 
 
-typedef pair<ll,ll> pll;
-typedef vector<ll> vll;
-typedef vector<string> vst;
-typedef vector<char> vc;
-typedef vector<pair<string,char>> vpsc;
-typedef vector<pair<char,string>> vpcs;
-typedef vector<pll> vpll;
-typedef vector<string> vs;
-typedef unordered_map<ll,ll> umll;
-typedef map<ll,ll> mll;
-typedef set<ll> sll;
-typedef unordered_set<ll,ll> usll;
+
+ typedef pair<ll,ll> pll;
+ typedef vector<ll> vll;
+ typedef vector<string> vst;
+ typedef vector<char> vc;
+ typedef vector<pair<string,char>> vpsc;
+ typedef vector<pair<char,string>> vpcs;
+ typedef vector<pll> vpll;
+ typedef vector<string> vs;
+ typedef unordered_map<ll,ll> umll;
+ typedef map<ll,ll> mll;
+ typedef set<ll> sll;
+ typedef unordered_set<ll,ll> usll;
+ // typedef tree<ll , null_type, less<ll>, rb_tree_tag, tree_order_statistics_node_update> pbds;
 template<class T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update> ;
 
@@ -90,6 +92,7 @@ void judge()
   #define debug2(x,y) cerr << #x << " = "; print(x); cerr << #y << " = "; print(y); cerr << nline; 
   #else
   #define debug(x) 
+  #define debug2(x,y)
   #endif
 }
 
