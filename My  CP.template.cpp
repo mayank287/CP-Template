@@ -81,7 +81,7 @@ using ordered_map = tree<key, value, cmp, rb_tree_tag, tree_order_statistics_nod
 // ********************** Some Utility Functions ********************************//
 template<typename T>
 void _print(T &&t)  { cout << t << "\n"; }
-void debugarr(ll arr[], ll n){cerr << "[ "; loop(i,n) cerr << arr[i] << " "; cerr << "]"; cerr << "\n";}
+void debugarr(ll arr[], ll n){cerr << "[ "; loop(i,n) cerr << arr[i] << " ";cerr << "]"; cerr << nline;}
 template<typename T>
 void printvec(vector<T>v){ll n=v.size();loop(i,n)cout<<v[i]<<" ";cout<<"\n";}
 template<typename T>
@@ -107,13 +107,22 @@ template<class T>void print(set<T,greater<T>> &a){cerr << '[' << ' ';for(auto x 
 template<class T>void print(multiset<T> &a){cerr << '[' << ' ';for(auto x : a){print(x);cerr << ' ';}cerr << ']';}
 template<class T>void print(multiset<T,greater<T>> &a){cerr << '[' << ' ';for(auto x : a){print(x);cerr << ' ';}cerr << ']';}
 template<class T> void print(unordered_set<T> &a){cerr << '[' << ' ';for(auto x : a){ print(x);cerr << ' ';}cerr << ']';}
-template<class T, class V>void print(vector<pair<T, V>> &a){cerr << '[' << ' ';for(auto x : a){cerr << ":";print(x.ss); cerr << ' ';}cerr << ']';}
+template<class T, class V>void print(vector<pair<T, V>> &a){cerr << '[' << ' ';for(auto x : a){print(x.ff);cerr << ":";print(x.ss); cerr << ' ';}cerr << ']';}
 template <class T, class V>void print(map <T, V> &a){cerr << "[ ";for (auto i : a){print(i);cerr << " "; }cerr << "]";}
 template <class T, class V>void print(unordered_map <T, V> &a){cerr << "[ ";for (auto i : a){print(i);cerr << " ";}cerr << "]";}
 template <class T>void print(vector<vector<T>> &a){ cerr << "[ ";for (auto i : a){print(i);cerr << " ";}cerr << "]";}
 // ********************************** Some Commmonly Used Functions ********************************* //
 ll GCD(ll a, ll b){while (b) { a %= b;swap(a, b);} return a;}
 ll LCM(ll a,ll b) {return ((ll) a * b) / GCD(a,b);}
+bool sorta(const pair<int,int> &a,const pair<int,int> &b){return (a.second < b.second);}
+ll moduloMultiplication(ll a,ll b,ll mod){ll res = 0;a %= mod;while (b){if (b & 1)res = (res + a) % mod;b >>= 1;}return res;}
+ll powermod(ll x, ll y, ll p){ll res = 1;x = x % p;if (x == 0) return 0;while (y > 0){if (y & 1)res = (res*x) % p;y = y>>1;x = (x*x) % p;}return res;};
+bool sortd(const pair<int,int> &a,const pair<int,int> &b){return (a.second > b.second);}
+string decToBinary(int n){string s="";int i = 0;while (n > 0) {s =to_string(n % 2)+s;n = n / 2;i++;}return s;}
+ll binaryToDecimal(string n){string num = n;ll dec_value = 0;int base = 1;int len = num.length();for(int i = len - 1; i >= 0; i--){if (num[i] == '1')dec_value += base;base = base * 2;}return dec_value;}
+bool isPrime(ll n){if(n<=1)return false;if(n<=3)return true;if(n%2==0||n%3==0)return false;for(int i=5;i*i<=n;i=i+6)if(n%i==0||n%(i+2)==0)return false;return true;}
+bool isPowerOfTwo(int n){if(n==0)return false;return (ceil(log2(n)) == floor(log2(n)));}
+bool isPerfectSquare(ll x){if (x >= 0) {ll sr = sqrt(x);return (sr * sr == x);}return false;}
 
 // ************************************* Online Judge **************************** //
 void judge()
@@ -136,10 +145,8 @@ void judge()
 void Mayank() 
 {
  
-  
 
-
-
+ 
 }
 
 // *********************************  Main Function **************************************//
