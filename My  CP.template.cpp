@@ -70,6 +70,27 @@ using namespace __gnu_pbds;
  typedef set<ll> sll;
  typedef unordered_set<ll,ll> usll;
  
+
+ // ******************************* Custom Safe Hash ********************************** //
+struct custom_hash
+{
+    static uint64_t splitmix64(uint64_t x)
+    {
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+        return x ^ (x >> 31);
+    }
+ 
+    size_t operator()(uint64_t x) const
+    {
+        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+    }
+};
+template <typename T1, typename T2> 
+using safe_map = unordered_map<T1, T2, custom_hash>;
+
  // ******************************* Policy Based DS ********************************** //
 template<class T>
 using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update> ;
@@ -98,6 +119,7 @@ template<typename T>
 ostream& operator<<(ostream &ostream, const vector<T> &c) { for (auto &it : c) cout << it << " "; return ostream; }
 
 // *************************************** Debugging **************************************** //
+
 template<class T>void print(T x) {cerr << x << " ";}
 template<class T, class V> void print(pair<T , V> x)
 {print(x.ff); cerr << ':'; print(x.ss);}
@@ -157,12 +179,12 @@ int main()
     cin.tie(NULL);
    
 
-    int te;
-    cin >> te;
-    while(te--)
-    {
-    Mayank();
-    }
+        int te;
+        cin >> te;
+        while(te--)
+        {
+        Mayank();
+        }
 
   return 0;
 }
