@@ -33,7 +33,7 @@ using namespace __gnu_pbds;
 #define lld long  double
 #define ull unsigned long long 
 #define all(x) (x).begin(), (x).end()
-#define rall(x) (x).end(),(x).end()
+#define rall(x) (x).end(),(x).begin()
 #define set_bits __builtin_popcountll
 
 
